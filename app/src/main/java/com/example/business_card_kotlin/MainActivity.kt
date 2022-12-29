@@ -3,14 +3,20 @@ package com.example.business_card_kotlin
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.business_card_kotlin.ui.theme.BusinesscardkotlinTheme
+import java.util.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    Main()
                 }
             }
         }
@@ -30,14 +36,34 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun Main() {
+    Column(){
+        Header()
+        Info()
+    }
+}
+
+@Composable
+fun Header() {
+    Image(painter = painterResource(id = R.drawable.snowflake),
+    contentDescription = null)
+    Text(
+        text = "iman shaterian".uppercase(),
+        Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center)
+    Text(text = "android developer".uppercase())
+
+}
+
+@Composable
+fun Info() {
+    Text(text = "info")
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     BusinesscardkotlinTheme {
-        Greeting("Android")
+        Main()
     }
 }
